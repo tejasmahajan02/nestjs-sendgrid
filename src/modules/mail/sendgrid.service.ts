@@ -17,10 +17,10 @@ export class SendGridService {
       this.logger.log(`Email successfully dispatched to: ${mail.to as string}`);
     } catch (error) {
       this.logger.error(`Error while sending email to :${mail.to as string}`);
-      console.log(error);
+      console.error(error);
       // throw error;
     }
   }
 }
 
-//NOTE You have to set "esModuleInterop" to true in your tsconfig file to be able to use the default key in import.
+// NOTE You have to set "esModuleInterop" to true in your tsconfig file to be able to use the default key in import.
