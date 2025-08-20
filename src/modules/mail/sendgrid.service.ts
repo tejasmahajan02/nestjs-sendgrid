@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { MailDataRequired, default as SendGrid } from '@sendgrid/mail';
+import { prettyStringify } from 'src/common/utils/helpers.util';
 
 @Injectable()
 export class SendGridService {
@@ -17,7 +18,7 @@ export class SendGridService {
       this.logger.log(`Email successfully dispatched to: ${mail.to as string}`);
     } catch (error) {
       this.logger.error(`Error while sending email to :${mail.to as string}`);
-      console.error(error);
+      console.error(prettyStringify(error));
       // throw error;
     }
   }
