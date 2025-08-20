@@ -9,6 +9,9 @@ import { SendGridService } from './sendgrid.service';
   imports: [
     BullModule.registerQueue({
       name: MAIL_QUEUE,
+      defaultJobOptions: {
+        removeOnComplete: true,
+      },
     }),
   ],
   providers: [MailProcessor, MailProducer, SendGridService],
