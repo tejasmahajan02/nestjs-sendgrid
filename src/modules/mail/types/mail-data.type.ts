@@ -4,7 +4,9 @@ export type PlainMailData = {
   body: string;
 };
 
-export type TemplateMailData<TTemplateData extends Record<string, unknown> = {}> = {
+export type TemplateMailData<
+  TTemplateData extends Record<string, unknown> = {},
+> = {
   to: string | string[];
   subject: string;
   templateId: string;

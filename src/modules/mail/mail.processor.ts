@@ -4,7 +4,7 @@ import { Job } from 'bullmq';
 import { MailDataRequired } from '@sendgrid/mail';
 import { MAIL_QUEUE } from './constants/mail.constants';
 import { SendGridService } from './sendgrid.service';
-import { MailJob } from './enums/mail-job.enum';
+import { MailQueueJob } from './enums/mail-queue-job.enum';
 import { ConfigService } from '@nestjs/config';
 import { PlainMailData, TemplateMailData } from './types/mail-data.type';
 
@@ -31,10 +31,10 @@ export class MailProcessor extends WorkerHost {
   async process(job: Job<any, any, string>): Promise<any> {
     const { data, name } = job;
     switch (name) {
-      case MailJob.PLAIN_TEXT_MAIL:
+      case MailQueueJob.PLAIN_TEXT_MAIL:
         await this.sendPlainMail(data);
         break;
-      case MailJob.TEMPLATE_MAIL:
+      case MailQueueJob.TEMPLATE_MAIL:
         await this.sendTemplateMail(data);
         break;
       default:
